@@ -19,6 +19,16 @@
           Unable to charge <%= number_to_currency(@order.product.price_cents / 100) %>. Please contact us.
         <% end %>
       </p>
+			<% if @order.giver_name.present? %>
+				<p class="card-text">
+					Gifted by <%= @order.giver_name %>.
+				</p>
+			<% end %>
+			<% if @order.gift_message.present? %>
+				<p class="card-text">
+					<span class="text-white font-weight-bold">Gift Note:</span> <%= @order.gift_message %>
+				</p>
+			<% end %>
     </div>
   </section>
 </article>
