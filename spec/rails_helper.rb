@@ -36,3 +36,14 @@ def create_child
     birthdate: Date.today - 1.month,
     user_facing_id: SecureRandom.uuid)
 end
+
+def create_order(child, product)
+  child.orders.create(
+    shipping_name: child.parent_name,
+    product: product,
+    child: child,
+    user_facing_id: SecureRandom.uuid[0..7],
+    address: "123 Smith Ln",
+    zipcode: "12345",
+    paid: true)
+end

@@ -9,7 +9,9 @@
     Buy Now <%= number_to_currency(@product.price_cents / 100) %>
   <% end %>
 	<% if @child.present? %>
-		<p>Shopping for <%= @child.full_name %></p>
+		<p class="mt-2">Shopping for <%= @child.full_name %> <%= link_to "x", product_path(@product) %></p>
+	<% else %>
+		<p class="mt-2">Search for a child in the <%= link_to "Gift Registry", registry_search_path(redirect_path: product_path(@product)) %></p>
 	<% end %>
 </article>
 <nav class="pb-4">

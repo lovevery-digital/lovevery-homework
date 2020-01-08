@@ -16,6 +16,7 @@ RSpec.feature "List Products", type: :feature do
     expect(product_nodes[2]).to have_text("5-6 months")
 
     expect(page).not_to have_text("Shopping for")
+    expect(page).to have_text("Search for a child in the Gift Registry")
   end
   
   scenario "visiting the homepage with a valid for uuid displays the name you are shopping for" do
@@ -26,6 +27,7 @@ RSpec.feature "List Products", type: :feature do
     visit "/?for=#{child.user_facing_id}"
     
     expect(page).to have_text("Shopping for #{child.full_name}")
+    expect(page).not_to have_text("Search for a child in the Gift Registry")
   end
   
   scenario "visiting the homepage with an invalid for uuid does not display shopping for" do
@@ -34,6 +36,7 @@ RSpec.feature "List Products", type: :feature do
     visit "/?for=baduuidexample"
     
     expect(page).not_to have_text("Shopping for")
+    expect(page).to have_text("Search for a child in the Gift Registry")
   end
   
   private

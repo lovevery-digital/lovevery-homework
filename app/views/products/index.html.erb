@@ -1,6 +1,8 @@
 <h1 class="h1 my-3 text-center text-uppercase font-weight-lighter text-tracked">Products</h1>
 <% if @child.present? %>
-	<p>Shopping for <%= @child.full_name %></p>
+	<p>Shopping for <%= @child.full_name %> <%= link_to "x", root_path %></p>
+<% else %>
+		<p class="">Search for a child in the <%= link_to "Gift Registry", registry_search_path %></p>
 <% end %>
 <ul class="list-unstyled products-list">
   <% @products.each do |product| %>

@@ -16,6 +16,12 @@
       </div>
     </header>
     <main class="container pt-1">
+      <% flash.each do |flash_name, message| %>
+				<aside class="alert alert-danger m-3" role="alert">
+		    	<%= message %>
+		  	</aside>
+			<% end %>
+			
       <%= yield %>
     </main>
     <footer class="mt-2 pt-2 border-top">

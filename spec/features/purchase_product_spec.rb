@@ -76,15 +76,9 @@ RSpec.feature "Purchase Product", type: :feature do
   scenario "Use a previous child when their for uuid is provided" do
     product = create_product
     child = create_child
-    child.orders.create(
-      shipping_name: child.parent_name,
-      product: product,
-      child: child,
-      user_facing_id: SecureRandom.uuid[0..7],
-      address: "123 Smith Ln",
-      zipcode: "12345",
-      paid: true)
+    create_order(child, product)
     child_count = Child.count
+    order_count = Order.count
 
     visit "/?for=#{child.user_facing_id}"
 
@@ -102,11 +96,12 @@ RSpec.feature "Purchase Product", type: :feature do
 
     click_on "Purchase"
     
+    expect(Child.count).to eq(child_count)
+    expect(Order.count).to eq(order_count + 1)
     expect(page).to have_content("Thanks for Your Order")
     expect(page).to have_content(Order.last.user_facing_id)
     expect(page).to have_content(child.full_name)
     expect(page).to have_content("To place future orders that ship direct to #{child.full_name} use this link")
-    expect(Child.count).to eq(child_count)
   end
 
   private
