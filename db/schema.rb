@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_07_172243) do
+ActiveRecord::Schema.define(version: 2020_01_07_205313) do
 
   create_table "children", force: :cascade do |t|
     t.string "full_name", null: false
@@ -18,7 +18,9 @@ ActiveRecord::Schema.define(version: 2020_01_07_172243) do
     t.string "parent_name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "user_facing_id"
     t.index ["full_name", "birthdate", "parent_name"], name: "index_children_on_full_name_and_birthdate_and_parent_name", unique: true
+    t.index ["user_facing_id"], name: "index_children_on_user_facing_id"
   end
 
   create_table "orders", force: :cascade do |t|

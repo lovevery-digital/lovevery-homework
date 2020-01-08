@@ -2,29 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "List Products", type: :feature do
   scenario "visiting the home page shows all products ordered by age with proper age units" do
-    products_in_order = [
-      Product.create!(
-        name: "product1",
-        description: "description2",
-        price_cents: 100,
-        age_low_weeks: 0,
-        age_high_weeks: 12,
-      ),
-      Product.create!(
-        name: "product2",
-        description: "description2",
-        price_cents: 300,
-        age_low_weeks: 13,
-        age_high_weeks: 17
-      ),
-      Product.create!(
-        name: "product3",
-        description: "description3",
-        price_cents: 1200,
-        age_low_weeks: 21,
-        age_high_weeks: 26
-      ),
-    ]
+    products_in_order = create_products
 
     visit "/"
 
@@ -37,5 +15,34 @@ RSpec.feature "List Products", type: :feature do
     expect(product_nodes[2]).to have_text("product3")
     expect(product_nodes[2]).to have_text("5-6 months")
 
+    expect(page).not_to have_text("Shopping for")
+  end
+  
+  scenario "visiting the homepage with a valid for uuid displays the name you are shopping for" do
+    child = create_child
+    
+    products_in_order = create_products
+
+    visit "/?for=#{child.user_facing_id}"
+    
+    expect(page).to have_text("Shopping for #{child.full_name}")
+  end
+  
+  scenario "visiting the homepage with an invalid for uuid does not display shopping for" do
+    products_in_order = create_products
+
+    visit "/?for=baduuidexample"
+    
+    expect(page).not_to have_text("Shopping for")
+  end
+  
+  private
+  
+  def create_products
+    [
+      create_product("product1", "description", 100, 0, 12),
+      create_product("product2", "description2", 300, 13, 17),
+      create_product("product3", "description3", 1200, 21, 26)
+    ]
   end
 end

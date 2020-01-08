@@ -19,3 +19,20 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
 end
+
+def create_product(name="product1", desc="description2", price=1000, age_low=0, age_high=12)
+  Product.create!(
+    name: name,
+    description: desc,
+    price_cents: price,
+    age_low_weeks: age_low,
+    age_high_weeks: age_high)
+end
+
+def create_child
+  Child.create!(
+    full_name: "Test Child",
+    parent_name: "Parent Name",
+    birthdate: Date.today - 1.month,
+    user_facing_id: SecureRandom.uuid)
+end

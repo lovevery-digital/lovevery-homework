@@ -2,13 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "View Product", type: :feature do
   scenario "Shows the product description and price" do
-    product = Product.create!(
-      name: "product1",
-      description: "description2",
-      price_cents: 1000,
-      age_low_weeks: 0,
-      age_high_weeks: 12,
-    )
+    product = create_product
 
     visit "/"
 
@@ -18,5 +12,32 @@ RSpec.feature "View Product", type: :feature do
 
     expect(page).to have_content("description2")
     expect(page).to have_content("$10.00")
+    expect(page).not_to have_text("Shopping for")
   end
+  
+  scenario "Shows who you are shopping for when there is a valid for uuid" do
+    create_product
+    child = create_child
+
+    visit "/?for=#{child.user_facing_id}"
+
+    within ".products-list .product" do
+      click_on "More Details…"
+    end
+
+    expect(page).to have_text("Shopping for #{child.full_name}")
+  end
+  
+  scenario "Does not display shopping for but still loads when there is an invalid for uuid" do
+    create_product
+
+    visit "/?for=baduuidexample"
+
+    within ".products-list .product" do
+      click_on "More Details…"
+    end
+
+    expect(page).not_to have_text("Shopping for")
+  end
+  
 end

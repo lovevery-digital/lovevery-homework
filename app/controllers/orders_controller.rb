@@ -1,11 +1,28 @@
 class OrdersController < ApplicationController
+  before_action :get_child, only: [ :new, :create ]
+
   def new
     @order = Order.new(product: Product.find(params[:product_id]))
   end
 
   def create
-    child = Child.find_or_create_by(child_params)
-    @order = Order.create(order_params.merge(child: child, user_facing_id: SecureRandom.uuid[0..7]))
+    values_from_old_order = {}
+    
+    # Only create a new child if we aren't already shopping for one in the system
+    if @child.present?
+      # Get the previous order details based on the original order that created the child
+      # This is a simplified use case. In reality we would use a general address set for a child 
+      # since addresses can change over time
+      old_order = @child.orders.order(:id).first
+      
+      # Working on the assumption if a child is in the systme there is at least one order.
+      # There should be more complexity / error checking here since the previous code could create children and fail on the order
+      values_from_old_order = old_order.attributes.slice("shipping_name", "address", "zipcode")
+    else
+      @child = Child.find_or_create_by(child_params.merge(user_facing_id: SecureRandom.uuid))
+      # Note: Should check that the child was successfully created, or even better see note about nested attributes below
+    end
+    @order = Order.create(order_params.merge(child: @child, user_facing_id: SecureRandom.uuid[0..7]).merge(values_from_old_order))
     if @order.valid?
       Purchaser.new.purchase(@order, credit_card_params)
       redirect_to order_path(@order)

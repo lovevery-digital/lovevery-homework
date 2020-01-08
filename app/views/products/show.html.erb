@@ -4,9 +4,13 @@
   <p class="lead">
     <%= @product.description %>
   </p>
-  <%= link_to new_order_path(product_id: @product.id), class: "btn btn-primary btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
+	<%# If you upate the route file so new order is nested inside product you can get a cleaner path where product_id is in the url and not a param %>
+  <%= link_to new_order_path({ product_id: @product.id }.merge(params.permit(:for))), class: "btn btn-primary btn-lg text-uppercase text-tracked font-weight-bolder"  do %>
     Buy Now <%= number_to_currency(@product.price_cents / 100) %>
   <% end %>
+	<% if @child.present? %>
+		<p>Shopping for <%= @child.full_name %></p>
+	<% end %>
 </article>
 <nav class="pb-4">
   <%= link_to products_path, class: "text-normal font-weight-bolder" do %>

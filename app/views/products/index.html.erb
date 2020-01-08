@@ -1,4 +1,7 @@
 <h1 class="h1 my-3 text-center text-uppercase font-weight-lighter text-tracked">Products</h1>
+<% if @child.present? %>
+	<p>Shopping for <%= @child.full_name %></p>
+<% end %>
 <ul class="list-unstyled products-list">
   <% @products.each do |product| %>
     <li class="card mb-3 product">
@@ -11,7 +14,7 @@
         <p class="card-text">
           <%= number_to_currency(product.price_cents / 100) %>
           <div>
-            <%= link_to "More Details…", product, class: "card-link btn btn-lg btn-success text-uppercase font-weight-bolder text-tracked f-small" %>
+            <%= link_to "More Details…", product_path(product, params.permit(:for)), class: "card-link btn btn-lg btn-success text-uppercase font-weight-bolder text-tracked f-small" %>
           </div>
         </p>
       </div>
