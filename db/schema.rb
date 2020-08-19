@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_21_201540) do
+ActiveRecord::Schema.define(version: 2020_08_19_200926) do
 
   create_table "children", force: :cascade do |t|
     t.string "full_name", null: false
@@ -24,14 +24,15 @@ ActiveRecord::Schema.define(version: 2019_09_21_201540) do
   create_table "orders", force: :cascade do |t|
     t.string "user_facing_id", null: false
     t.integer "product_id", null: false
-    t.integer "child_id", null: false
     t.string "shipping_name", null: false
     t.string "address", null: false
     t.string "zipcode", null: false
     t.boolean "paid", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["child_id"], name: "index_orders_on_child_id"
+    t.string "orderable_type"
+    t.integer "orderable_id"
+    t.index ["orderable_type", "orderable_id"], name: "index_orders_on_orderable_type_and_orderable_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
 
@@ -45,6 +46,5 @@ ActiveRecord::Schema.define(version: 2019_09_21_201540) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "orders", "children"
   add_foreign_key "orders", "products"
 end

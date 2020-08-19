@@ -1,3 +1,3 @@
 class Child < ApplicationRecord
-  has_many :orders
+  has_many :orders, as: :orderable
 end
