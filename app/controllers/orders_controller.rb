@@ -25,7 +25,6 @@ class OrdersController < ApplicationController
     else
       child = Child.find_or_create_by(child_params)
       order = Order.create(order_params.merge(orderable: child, user_facing_id: SecureRandom.uuid[0..7]))
-      puts order.id
     end
     order
   end

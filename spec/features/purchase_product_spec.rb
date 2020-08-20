@@ -69,7 +69,7 @@ RSpec.feature "Purchase Product", type: :feature do
     expect(page).to have_content("Kim Jones")
   end
 
-  scenario "Creates an order using guest without address" do
+  scenario "Creates an order using guest without address and with the message" do
     product = Product.create!(
         name: "product1",
         description: "description2",
