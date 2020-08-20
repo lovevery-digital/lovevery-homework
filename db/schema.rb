@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_19_200926) do
+ActiveRecord::Schema.define(version: 2020_08_19_235352) do
 
   create_table "children", force: :cascade do |t|
     t.string "full_name", null: false
@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(version: 2020_08_19_200926) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["full_name", "birthdate", "parent_name"], name: "index_children_on_full_name_and_birthdate_and_parent_name", unique: true
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "child_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["child_id"], name: "index_guests_on_child_id"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -32,6 +40,7 @@ ActiveRecord::Schema.define(version: 2020_08_19_200926) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "orderable_type"
     t.integer "orderable_id"
+    t.string "message"
     t.index ["orderable_type", "orderable_id"], name: "index_orders_on_orderable_type_and_orderable_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
   end
@@ -46,5 +55,6 @@ ActiveRecord::Schema.define(version: 2020_08_19_200926) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "guests", "children"
   add_foreign_key "orders", "products"
 end

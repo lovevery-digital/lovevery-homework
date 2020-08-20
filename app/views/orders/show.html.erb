@@ -10,7 +10,12 @@
       <h3 class="card-subtitle text-white font-weight-lighter h5 mb-2">
         <%= @order.product.name %>
         for
-        <strong><%= @order.orderable.full_name %></strong>
+        <strong>
+          <%= @order.orderable_type.eql?('Guest') ? @order.orderable.child.full_name : @order.orderable.full_name %>
+        </strong>
+        <% if @order.message.present? %>
+          with the message <strong> <%= @order.message %> </strong>
+        <% end %>
       </h3>
       <p class="card-text">
         <% if @order.paid? %>

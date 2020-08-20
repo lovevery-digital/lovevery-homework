@@ -1,5 +1,8 @@
 class Order < ApplicationRecord
   self.ignored_columns = %w(child_id)
+
+  attr_accessor :is_guest
+
   belongs_to :product
   belongs_to :orderable, polymorphic: true
 

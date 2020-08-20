@@ -35,7 +35,7 @@ Order.find_or_create_by!(
   zipcode: "90210",
   user_facing_id: "890890908980980",
   paid: true,
-  child: Child.find_or_create_by!(
+  orderable: Child.find_or_create_by!(
     full_name: "Chris Smith",
     birthdate: Date.new(2019,1,4),
     parent_name: "Sammi Johnson"
