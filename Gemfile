@@ -6,8 +6,8 @@ ruby '2.6.3'
 gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
 gem 'puma', '~> 4.3'
-gem 'sass-rails', '~> 5'
-gem 'webpacker', '~> 4.0'
+gem 'sass-rails', '~> 6'
+gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 
@@ -25,7 +25,6 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  #gem 'selenium-webdriver'
   gem 'webdrivers'
 end
 
