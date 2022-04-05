@@ -4,13 +4,27 @@ This is the take-home project for engineers at Lovevery, and thanks in advance f
 goal of this project is to try to simulate some real-world work you'll do as an engineer for us, so that we can
 see you write some code from the comfort of your own computer.
 
+## Submission Instructions
+
+1. Please clone the repo into your own **private repo** in order to complete the assignment.
+1. In addition to completing the implementation that the repo describes, please **edit this README** and provide one or two paragraphs explaining what you did, why, and how you tested it. You may include ideas for future enhancement, if you have anything to call out.
+1. Share your private repo with the following email addresses when you're ready for us to take a look:
+
+```
+manisha@lovevery.com
+paul@lovevery.com
+tara.eckenrode@lovevery.com
+ola.mork@lovevery.com
+ian@lovevery.com
+```
+
 ## The Project
 
 This application is a *very* basic simulation of browsing our products and purchasing one of them.  The
 application should work and it has tests to demonstrate that.  Much is simplified to keep the code minimal and
 avoid making you deal with unnecessary complexity.
 
-The basic flow is:
+### The basic flow is:
 
 1. Visit `/` and see the products
 1. Select a product to view it
@@ -26,7 +40,7 @@ What we'd like you to do is allow this app to support gifting.  Instead of a par
 their child, we want you to *also* allow anyone to buy a product for any child. Imagine you are someone's aunt or
 uncle and you want to get them a Lovevery product as a gift.
 
-There are three basic requirements:
+### There are three basic requirements:
 
 * The gift giver can provide an optional message to the child.
 * The gift giver must know the child's name and birthdate, as well as the child's parent's name, but does not need
@@ -56,6 +70,13 @@ This should install needed gems, set up your databases, and then run the tests, 
 anything is wrong at this stage and you can't obviously fix it, let us know.  This is *not* a test of your ability
 to setup a Rails dev environment.
 
+Once you have verified that you can run the specs, run both webpacker and rails server in seperate shells via:
+
+```
+> bin/webpack-dev-server
+> bin/rails s
+```
+
 ## Notes About The Code
 
 We've kept this as free of third party dependencies as possible to keep things simple.  There are two main
@@ -77,3 +98,4 @@ or `scenario` block, and this app has many examples to follow.
 Finally, while we tried to write a clean and well-tested app for you, we will go ahead and admit now that it's not
 perfect and there are things that could be improved.  We might ask you about your thoughts on some of this code
 later, but this is all part of the scenario - real-world code is never as nice as we'd like.
+
