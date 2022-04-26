@@ -63,6 +63,7 @@ Assuming you have Ruby installed and are using a Ruby version manager like rvm o
 
 ```
 > bin/setup
+> yarn install
 > bin/rspec
 ```
 
