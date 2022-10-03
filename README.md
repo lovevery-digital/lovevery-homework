@@ -11,11 +11,12 @@ see you write some code from the comfort of your own computer.
 1. Share your private repo with the following email addresses when you're ready for us to take a look:
 
 ```
-manisha@lovevery.com
 paul@lovevery.com
-tara.eckenrode@lovevery.com
 ola.mork@lovevery.com
-ian@lovevery.com
+charlie.maffitt@lovevery.com
+grey@lovevery.com
+yanny@lovevery.com
+manisha@lovevery.com
 ```
 
 ## The Project
