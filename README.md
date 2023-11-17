@@ -51,7 +51,7 @@ us specifics about the requirements, we might say to use your best judgement.
 
 ## Getting Set Up
 
-Assuming you have Ruby installed and are using a Ruby version manager like rvm or rbenv, you should be able to:
+Assuming you have Ruby installed and are using a Ruby version manager like rvm or rbenv, and have Node installed, you should be able to:
 
 ```
 > bin/setup
