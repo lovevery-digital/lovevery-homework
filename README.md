@@ -59,6 +59,10 @@ Assuming you have Ruby installed and are using a Ruby version manager like rvm o
 > bin/rspec
 ```
 
+If you run into an error installing Ruby, we recommend using rbenv, not rvm to install Ruby.
+
+If you run into errors running "yarn install", make sure you have Node installed.
+
 This should install needed gems, set up your databases, and then run the tests, which should all pass.  If
 anything is wrong at this stage and you can't obviously fix it, let us know.  This is *not* a test of your ability
 to setup a Rails dev environment.
