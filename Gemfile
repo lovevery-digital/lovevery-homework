@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.7.8'
 
 gem 'rails', '~> 6.0.0'
 gem 'sqlite3', '~> 1.4'
@@ -17,6 +17,8 @@ gem "actionview", ">= 6.0.2.2"
 
 
 
+
+gem "net-http"
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.

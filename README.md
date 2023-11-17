@@ -8,7 +8,7 @@ see you write some code from the comfort of your own computer.
 
 1. Please clone the repo into your own **private repo** in order to complete the assignment.
 1. In addition to completing the implementation that the repo describes, please **edit this README** and provide one or two paragraphs explaining what you did, why, and how you tested it. You may include ideas for future enhancement, if you have anything to call out.
-1. When you're ready for us to take a look, share your private repo with the email addresses that your recuiter sent with the link to this assigment.
+1. When you're ready for us to take a look, share your private repo with the email addresses that your recruiter sent with the link to this assigment.
 
 ## The Project
 
@@ -51,7 +51,7 @@ us specifics about the requirements, we might say to use your best judgement.
 
 ## Getting Set Up
 
-Assuming you have Ruby installed and are using a Ruby version manager like rvm or rbenv, you should be able to:
+Assuming you have Ruby installed and are using a Ruby version manager like rvm or rbenv, and have Node installed, you should be able to:
 
 ```
 > bin/setup
@@ -59,11 +59,15 @@ Assuming you have Ruby installed and are using a Ruby version manager like rvm o
 > bin/rspec
 ```
 
+If you run into an error installing Ruby, we recommend using rbenv, not rvm to install Ruby.
+
+If you run into errors running "yarn install", make sure you have Node installed.
+
 This should install needed gems, set up your databases, and then run the tests, which should all pass.  If
 anything is wrong at this stage and you can't obviously fix it, let us know.  This is *not* a test of your ability
 to setup a Rails dev environment.
 
-Once you have verified that you can run the specs, run both webpacker and rails server in seperate shells via:
+Once you have verified that you can run the specs, run both webpacker and rails server in separate shells via:
 
 ```
 > bin/webpack-dev-server
