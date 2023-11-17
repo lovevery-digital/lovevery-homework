@@ -8,7 +8,7 @@ see you write some code from the comfort of your own computer.
 
 1. Please clone the repo into your own **private repo** in order to complete the assignment.
 1. In addition to completing the implementation that the repo describes, please **edit this README** and provide one or two paragraphs explaining what you did, why, and how you tested it. You may include ideas for future enhancement, if you have anything to call out.
-1. When you're ready for us to take a look, share your private repo with the email addresses that your recuiter sent with the link to this assigment.
+1. When you're ready for us to take a look, share your private repo with the email addresses that your recruiter sent with the link to this assigment.
 
 ## The Project
 
@@ -63,7 +63,7 @@ This should install needed gems, set up your databases, and then run the tests, 
 anything is wrong at this stage and you can't obviously fix it, let us know.  This is *not* a test of your ability
 to setup a Rails dev environment.
 
-Once you have verified that you can run the specs, run both webpacker and rails server in seperate shells via:
+Once you have verified that you can run the specs, run both webpacker and rails server in separate shells via:
 
 ```
 > bin/webpack-dev-server
