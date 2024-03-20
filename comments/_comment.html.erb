@@ -1,0 +1,5 @@
+<strong> <%= comment.author_name.present? ? comment.author_name : "Unknown" %>: </strong>
+<small><%= comment.created_at.strftime("%B %d, %Y %l:%M %p") %></small>
+<p> <%= comment.content %> </p>
+<hr>
+

@@ -1,0 +1,7 @@
+<article class="jumbotron mt-3">
+	<h3>Comments (<%= comments.count %>) </h3>
+
+
+	<%= render partial: "comments/form", locals: { comment: comments.new } %>
+	<%= render comments.select(&:persisted?) %>
+</article>

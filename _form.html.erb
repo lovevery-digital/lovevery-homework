@@ -1,0 +1,20 @@
+<%= form_with model: comment, local: true  do |form| %>
+	<div class="form-row">
+		<%= form.hidden_field :commentable_id %>
+		<%= form.hidden_field :commentable_type %>
+		<div class="form-group col-md-4">
+      <%= form.label :author_name, "Your Name" %>
+      <%= form.text_field :author_name, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-12">
+      <%= form.label :content, "Tell us what you're thinking" %>
+      <%= form.text_area :content, class: "form-control" %>
+    </div>
+
+    <div class="form-group col-md-3">
+	    <%= form.submit("Submit", class: "btn btn-primary btn-lg") %>
+	  </div>
+	</div>
+  <hr>
+<% end %>

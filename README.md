@@ -8,11 +8,7 @@ see you write some code from the comfort of your own computer.
 
 1. Please clone the repo into your own **private repo** in order to complete the assignment.
 1. In addition to completing the implementation that the repo describes, please **edit this README** and provide one or two paragraphs explaining what you did, why, and how you tested it. You may include ideas for future enhancement, if you have anything to call out.
-1. When you're ready for us to take a look, share your private repo with the following email addresses:
-   - michelle.bauer@lovevery.com
-   - charlie.maffitt@lovevery.com
-   - ian.agne@lovevery.com
-   - kyle@lovevery.com
+1. When you're ready for us to take a look, share your private repo with the email addresses that your recruiter sent with the link to this assigment.
 
 ## The Project
 
@@ -99,4 +95,55 @@ or `scenario` block, and this app has many examples to follow.
 Finally, while we tried to write a clean and well-tested app for you, we will go ahead and admit now that it's not
 perfect and there are things that could be improved.  We might ask you about your thoughts on some of this code
 later, but this is all part of the scenario - real-world code is never as nice as we'd like.
+
+# My Changes
+
+## Setup
+
+I implemented a simple docker environment to boot and setup the project with minimal effort using a couple of commands:
+
+```bash
+# Generate .env file
+cp .env.sample .env
+
+# Build docker image
+docker-compose build
+
+# Start rails environment
+docker-compose up
+```
+
+After the process finishes starting up, a rails server with the full project will be available through the route http://localhost:3000
+
+## Coding
+
+In order to simplify and refactor the logic to create a new order I implemented the form object pattern into the Orders controller. That way I am able to control the way in which the information to create the order is retrieved from previous records.
+
+The implementation from the rails controller then looks rather simple
+
+```ruby
+  def new
+    @order_form = OrderForm.new(form_params)
+  end
+
+  def create
+    @order_form = OrderForm.new(form_params)
+
+    if @order_form.submit
+      redirect_to order_path(@order_form.order)
+    else
+      render :new
+    end
+  end
+```
+
+This implementation of the Form object pattern simplifies the implementation of the logic to create orders and process payments.
+
+### Testing
+
+I also added more specs. I decided to further test the form object's validations and the attributes they should have.
+
+I decided to add an RSpec matcher called "have_attribute" to display how easily you can expand upon RSpec's already robust functionalities. You can find the file at `spec/support/matchers/have_attribute.rb`.
+
+In order to save some code when writting feature tests for the gift purchasing feature, I decided to use contexts and the let function to generate lazy loaded data.
 
