@@ -7,6 +7,7 @@ see you write some code from the comfort of your own computer.
 ## Submission Instructions
 
 1. Please clone the repo into your own **private repo** in order to complete the assignment.
+1. Make your changes in the form of a pull request.
 1. In addition to completing the implementation that the repo describes, please **edit this README** and provide one or two paragraphs explaining what you did, why, and how you tested it. You may include ideas for future enhancement, if you have anything to call out.
 1. When you're ready for us to take a look, share your private repo with the following email addresses:
    - michelle.bauer@lovevery.com
