@@ -1,0 +1,14 @@
+services:
+  app:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    command: [ "bin/start_dev.sh" ]
+    stdin_open: true
+    tty: true
+    volumes:
+      - ./:/usr/src/app
+    environment:
+      - RAILS_ENV=development
+    ports:
+      - 3001:3000
